@@ -19,7 +19,7 @@
 ## Features
 
 - **Real drives, sampled:** spin-up at power on, the idle hum, access clicks and crackles and the spindown when the power goes, played from the board's supercapacitor. Swap sample packs to change the drive.
-- **Drives modelled from physics:** a pack can be a synthesised drive instead of recordings, from a 1985 stepper to a 2005 7,200 rpm drive, tuned by ear in the online [Drive Lab](https://maverickuk.github.io/HDDSynth_Native/drive-lab/).
+- **Drives modelled from physics:** a pack can be a synthesised drive instead of recordings, from a 1985 stepper to a 2005 7,200 rpm drive, tuned by ear in the online [Drive Lab](https://maverickuk.github.io/IDESynth/drive-lab/).
 - **Knows what the drive is doing:** from the motherboard's HDD LED, from your modern computer over USB or exactly from an [IDE Synth Bay](https://github.com/MaverickUK/IDESynthBay): file copies sound different from random access, and the head goes where the PC really reads.
 - **On the board:** volume and balance on a knob, a button for the next pack, an RGB activity light and an optional OLED screen.
 
