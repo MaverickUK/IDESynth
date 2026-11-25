@@ -43,7 +43,7 @@
 | [How it works](docs/architecture.md) | The two cores, where each sound plays from, power loss |
 | [Building and flashing](docs/building.md) | Building it yourself, tests, the serial console, versioning |
 | [History](docs/history.md) | From breadboard to MK5, with the early videos |
-| [Changelog](CHANGELOG.md) | Every release |
+| [Changelog](firmware/CHANGELOG.md) | Every release |
 
 ## The Synth family
 

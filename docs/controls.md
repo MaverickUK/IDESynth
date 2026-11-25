@@ -77,7 +77,7 @@ switches off on power loss, to save the supercap's energy for the spindown.
 
 These are rendered by the host tests from the same drawing code the firmware
 uses (with made-up data). To regenerate them:
-`HDDSYNTH_PREVIEW_DIR=docs/oled test/run_native_tests.sh && python3 test/pbm_to_png.py docs/oled`.
+`HDDSYNTH_PREVIEW_DIR=../docs/oled test/run_native_tests.sh && python3 test/pbm_to_png.py ../docs/oled`, from `firmware/`.
 
 ## Editing the SD card over USB
 

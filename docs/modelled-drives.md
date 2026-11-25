@@ -31,7 +31,7 @@ at 0.5 both are at full level.
 
 The easiest way to make one is the **Drive Lab**, online at
 <https://maverickuk.github.io/HDDSynth_Native/drive-lab/> (source in
-[`tools/drive-lab`](../tools/drive-lab)): tune the drive by ear, with a real
+[`tools/drive-lab`](../firmware/tools/drive-lab)): tune the drive by ear, with a real
 pack's WAV alongside to compare, and download its `drive.json`.
 The smallest drive.json names a built-in preset, and any group can then
 change some of its parameters:

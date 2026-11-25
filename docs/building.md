@@ -2,6 +2,8 @@
 
 Flashing a release, building the firmware yourself, the tests and the serial console. Back to the [README](../README.md).
 
+The firmware is in [firmware/](../firmware): run every command below from that folder.
+
 ## Build and flash
 
 **Flash a board with the latest release** (needs the GitHub CLI, `gh`):
@@ -15,7 +17,7 @@ board shows it straight away; otherwise hold BOOT, tap RESET), copies the
 firmware on and checks the board comes back as HDDSYNTH.
 
 **Ready-made UF2s:** download `hddsynth-mk5-vX.Y.Z.uf2` from the
-[latest release](https://github.com/MaverickUK/HDDSynth_Native/releases/latest).
+[latest release](https://github.com/MaverickUK/IDESynth/releases/latest) (up to v0.24.1, [HDDSynth_Native's](https://github.com/MaverickUK/HDDSynth_Native/releases)).
 GitHub Actions builds every push (the UF2 is in the run's artifacts) and
 publishes a release for every `vX.Y.Z` tag.
 
@@ -57,7 +59,7 @@ While the version is `0.y.z`, anything may change between minor versions.
 ### Unit tests (runs locally, not on IDE Synth hardware)
 
 ```sh
-test/run_native_tests.sh ../HDDSynth_Samples   # optional: path to sample packs
+test/run_native_tests.sh ../../HDDSynth_Samples   # optional: path to the sample packs
 ```
 
 Covers:

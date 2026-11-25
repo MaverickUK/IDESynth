@@ -5,12 +5,12 @@ Your computer's own disk activity over USB, and the serial protocol the app, the
 ## Companion app: your computer's disk activity over USB
 
 Plug the IDE Synth into a Mac or PC with a USB cable and run the
-[**HDD Synth Companion**](../companion/README.md), a tray (menu bar) app. It
+[**HDD Synth Companion**](../firmware/companion/README.md), a tray (menu bar) app. It
 sends the computer's own disk activity, so the IDE Synth needs no HDD LED
 wiring. From its menu and settings window you can also choose the sample
 pack and set the volume and balance. It's a Python app installed with one
 `pipx` command, unsigned and needing no admin rights; see
-[companion/README.md](../companion/README.md).
+[companion/README.md](../firmware/companion/README.md).
 
 The app's activity is added to the activity input (and to the IDE Synth Bay
 link): either one plays the access sound. Nothing needs turning on in
