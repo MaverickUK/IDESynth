@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# KiCad: backups, caches, locks and per-user settings
+*-backups/
+fp-info-cache
+*.lck
+_autosave-*
+*.kicad_prl
+
+# Python
+__pycache__/
