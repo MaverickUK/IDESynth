@@ -1288,7 +1288,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Connect to GND: 9dB gain (Quiet/Cleanest).\nConnect to VDD (5V): 12dB gain (Standard).\nConnect to VDD through a 100kOhm resistor: 15dB (Loud).\nLeave Floating (Unconnected): 6dB (Very quiet)."
+	(text "GAIN_SLOT (MAX98357A datasheet, Table 8):\nTo VDD: 6dB (this board). To VDD through 100kOhm: 3dB.\nUnconnected: 9dB. To GND: 12dB. To GND through 100kOhm: 15dB."
 		(exclude_from_sim no)
 		(at 71.882 121.158 0)
 		(effects
@@ -2301,7 +2301,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1uF"
+		(property "Value" "100nF"
 			(at 139.7 63.5001 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2312,7 +2312,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 142.5448 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -2345,7 +2345,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "CL10B104KO8NNNC"
+		(property "Manufacturer_Part_Number" "CL05B104KO5NNNC"
 			(at 143.51 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -2488,7 +2488,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Number" "C14663"
+		(property "LCSC Part Number" "C1525"
 			(at 143.51 64.77 0)
 			(hide yes)
 			(show_name no)

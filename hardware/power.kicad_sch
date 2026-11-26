@@ -5,6 +5,172 @@
 	(uuid "582f42f8-ba0c-4f1f-8326-0c479e4baeba")
 	(paper "A4")
 	(lib_symbols
+		(symbol "Device:D_Schottky"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D_Schottky"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Schottky diode"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "diode Schottky"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "D_Schottky_0_1"
+				(polyline
+					(pts
+						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Schottky_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+			)
 		(symbol "Connector_Generic:Conn_01x02"
 			(pin_names
 				(offset 1.016)
@@ -3347,12 +3513,6 @@
 		(uuid "72f70a3b-bb33-4743-adde-f7f7acb3ea98")
 	)
 	(junction
-		(at 19.05 63.5)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7ad4af9c-4890-4007-b1cb-f3616c14154b")
-	)
-	(junction
 		(at 179.07 102.87)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4674,7 +4834,7 @@
 	)
 	(wire
 		(pts
-			(xy 19.05 63.5) (xy 27.94 63.5)
+			(xy 19.05 63.5) (xy 20.32 63.5)
 		)
 		(stroke
 			(width 0)
@@ -4794,17 +4954,7 @@
 	)
 	(wire
 		(pts
-			(xy 19.05 63.5) (xy 19.05 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d7a3e882-b0c2-4a89-bddd-f37e4bd68979")
-	)
-	(wire
-		(pts
-			(xy 39.37 63.5) (xy 50.8 63.5)
+			(xy 39.37 63.5) (xy 44.45 63.5)
 		)
 		(stroke
 			(width 0)
@@ -5459,7 +5609,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Number" ""
+		(property "LCSC Part Number" "C52923"
 			(at 78.74 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -6872,6 +7022,83 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 19.05 63.5 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a3319d69-c80e-43fa-ae46-6339de4b06fb")
+		(property "Reference" "#FLG07"
+			(at 19.05 65.405 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 28.448 68.58 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 19.05 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 19.05 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 19.05 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5bd4f8cf-e0fc-4f5a-a688-fe51aa4f27a4")
+		)
+		(instances
+			(project "HDD Synth Prototype MK5"
+				(path "/1a22431a-ba36-40a0-9a7e-c2a82ec69c53/045d9081-4e75-4a6b-9321-784f56d8310c"
+					(reference "#FLG07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 34.29 49.53 0)
 		(unit 1)
@@ -8115,7 +8342,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Number" ""
+		(property "LCSC Part Number" "C1538"
 			(at 73.66 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -9821,6 +10048,122 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 44.45 63.5) (xy 50.8 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9c149bc-c80d-477d-b670-19f795caaec9")
+	)
+	(wire
+		(pts
+			(xy 44.45 63.5) (xy 44.45 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db31a026-e1c7-438b-a4f3-610f382571c0")
+	)
+	(junction
+		(at 44.45 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "98cc67e1-a2ef-49ea-997c-ac90f05d765b")
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 24.13 63.5 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "18268c56-ff73-4280-93ec-48e7f11cffef")
+		(property "Reference" "D4"
+			(at 24.13 59.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SS34"
+			(at 24.13 67.31 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMA"
+			(at 24.13 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 24.13 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Schottky diode: USB VBUS in, so neither 5 V input can feed the other"
+			(at 24.13 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Number" "C8678"
+			(at 24.13 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "40ad97b2-3173-409b-bd3c-3e0c9f8daa7a")
+		)
+		(pin "2"
+			(uuid "fadde03f-cfe9-4b50-87a7-b3e6e654f58c")
+		)
+		(instances
+			(project "HDD Synth Prototype MK5"
+				(path "/1a22431a-ba36-40a0-9a7e-c2a82ec69c53/045d9081-4e75-4a6b-9321-784f56d8310c"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
 	(symbol
 		(lib_id "Device:D_Zener")
 		(at 39.37 69.85 270)
@@ -9878,6 +10221,17 @@
 			)
 		)
 		(property "Description" "Zener diode"
+			(at 39.37 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part Number" "C113952"
 			(at 39.37 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -12510,7 +12864,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 214.63 146.812 90)
 			(hide yes)
 			(show_name no)
@@ -12543,7 +12897,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "RC0603FR-071KL"
+		(property "Manufacturer_Part_Number" "0402WGF2202TCE"
 			(at 214.63 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -12686,7 +13040,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Number" "C31850"
+		(property "LCSC Part Number" "C25768"
 			(at 214.63 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -12714,7 +13068,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 19.05 69.85 180)
+		(at 44.45 60.96 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12725,7 +13079,7 @@
 		(fields_autoplaced yes)
 		(uuid "c2a6f18a-394b-47d5-b2bf-159ecc3ad639")
 		(property "Reference" "#PWR013"
-			(at 19.05 66.04 0)
+			(at 44.45 64.77 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12736,7 +13090,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 19.05 74.93 0)
+			(at 44.45 57.15 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12746,7 +13100,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 19.05 69.85 0)
+			(at 44.45 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12757,7 +13111,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 19.05 69.85 0)
+			(at 44.45 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12768,7 +13122,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 19.05 69.85 0)
+			(at 44.45 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12977,7 +13331,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 220.98 143.002 90)
 			(hide yes)
 			(show_name no)
@@ -13010,7 +13364,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_Part_Number" "RC0603FR-071KL"
+		(property "Manufacturer_Part_Number" "0402WGF2202TCE"
 			(at 220.98 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -13153,7 +13507,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Number" "C31850"
+		(property "LCSC Part Number" "C25768"
 			(at 220.98 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -14132,7 +14486,7 @@
 				)
 			)
 		)
-		(property "Value" "110K"
+		(property "Value" "120K"
 			(at 128.27 54.61 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14307,7 +14661,7 @@
 				)
 			)
 		)
-		(property "LCSC Part Number" "C2909311"
+		(property "LCSC Part Number" "C25750"
 			(at 128.27 58.42 90)
 			(hide yes)
 			(show_name no)
