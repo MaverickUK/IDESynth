@@ -33,7 +33,7 @@ struct Stats {
 };
 
 bool begin();                       // init SPI1 + card + filesystem; retries for cfg::SD_BOOT_RETRY_MS
-bool present();                     // a card answers (quick probe; doesn't mount)
+bool present();                     // a card is in (card detect) and answers (quick probe; doesn't mount)
 bool mountsNow();                   // SdFat's full init works (up to 2 s; leaves it unmounted)
 bool cardOk();                      // false while the card is down
 

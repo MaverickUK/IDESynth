@@ -7,14 +7,19 @@ How the IDE Synth hears exactly what an [IDE Synth Bay](https://github.com/Maver
 [IDE Synth Bay](https://github.com/MaverickUK/IDESynthBay) emulates an IDE
 hard disk, so it knows exactly what the drive is doing, not just when its
 activity LED is lit. With `"EXPERIMENTAL_HDDSYNTHPRO_SUPPORT": true` the
-IDE Synth listens for it on header **J6** (instead of an OLED):
+IDE Synth listens for it on header **J8, the Synth Link** (board 5.4.0). A
+straight 4-way cable connects J8 to the Bay's J3, and the OLED on J6 can stay
+on:
 
-| J6 pin | Signal | Connect to |
+| J8 pin | Signal | Connect to |
 |---|---|---|
-| 1 | 3.3 V | nothing: each board has its own supply |
+| 1 | 5 V, from after the eFuse | IDE Synth Bay's J3 pin 1: one supply can run both boards |
 | 2 | GND | IDE Synth Bay GND |
-| 3 | GP25, UART1 RX | IDE Synth Bay's link TX, through a 1 kΩ resistor at its end |
-| 4 | GP24, UART1 TX | IDE Synth Bay's link RX (on its PCB, J3 pin 4: a straight 4-way cable connects it), for its `seek_timing = synth` |
+| 3 | GP1, UART0 RX, through 1 kΩ (R43) | IDE Synth Bay's link TX |
+| 4 | GP2, UART0 TX, through 1 kΩ (R42) | IDE Synth Bay's link RX, for its `seek_timing = synth` |
+
+On the beta testers' 5.3.0 boards the link shared J6 with the OLED (pin 3
+GP25 in, pin 4 GP24 out, OLED off): firmware 0.25.0 is the last for that.
 
 It's a one-way UART at 115200 baud, 8N1, carrying lines like
 `$HDA,1,1,S,R*4C` (busy, sequential, reading); the protocol is in
@@ -59,5 +64,5 @@ fit the 2 KB transmit queue).
 
 To try it without an IDE Synth Bay: with `SIMULATION_MODE` on, one simulated
 burst in three becomes a longer sequential spell. Or connect a 3.3 V
-USB-serial adapter's TX to J6 pin 3 (and GND to pin 2) and paste lines such
+USB-serial adapter's TX to J8 pin 3 (and GND to pin 2) and paste lines such
 as `$HDA,1,1,S,R*4C` (busy, sequential) and `$HDA,1,0,I,-*28` (idle).

@@ -59,7 +59,7 @@ uint32_t rotationalWaitUs(const SeekModel& m, uint64_t nowUs, uint32_t sector, u
 // Reading or writing `sectors` sectors passing under the head.
 uint32_t transferUs(const SeekModel& m, uint32_t sectors, uint32_t sectorsPerTrack);
 
-// $HDM: the synth tells HDDSynthPro (on the link's other direction, J6 pin 4) which model
+// $HDM: the synth tells HDDSynthPro (on the link's other direction, J8 pin 4) which model
 // is playing, every 2 s and when the pack changes:
 //
 //   $HDM,2,<V|S>,<rpm>,<cylinders>,<fullStroke ms x10>,<track ms x10>,<settleDamp x100>,<step ms x10>,<stepRamp x100>,<zoned 0|1>

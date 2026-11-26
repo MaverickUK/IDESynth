@@ -8,6 +8,27 @@ and versions follow [Semantic Versioning](https://semver.org). Releases from
 linked versions before it have a release with its UF2 on
 [HDDSynth_Native's](https://github.com/MaverickUK/HDDSynth_Native/releases).
 
+## [0.26.0] - 2026-11-26
+
+For board 5.4.0. On the beta testers' 5.3.0 boards the IDE Synth Bay link
+needs 0.25.0. Everything else works there, except that a card slow to wake
+at power-on gets one try instead of 3 s of them.
+
+### Added
+- **SD card detect** (5.4.0, GPIO 29, internal pull-up). A card pulled out
+  is noticed within 50 ms (`[sd] card removed (card detect)`) instead of
+  after failed reads, and the remount waits for one to go back in. At
+  power-on an empty slot is reported at once (`[sd] no SD card (card
+  detect)`) instead of after 3 s of retries. Card detect is trusted only
+  once it has read "card in", so a board without it wired (5.3.0) still
+  works: there a single probe decides.
+
+### Changed
+- **The IDE Synth Bay link moved to the Synth Link header, J8** (5.4.0):
+  UART0, RX GPIO 1 and TX GPIO 2, instead of UART1 on J6's GPIO 25/24.
+  `EXPERIMENTAL_HDDSYNTHPRO_SUPPORT` no longer turns the OLED off, as the
+  two have their own headers now.
+
 ## [0.25.0] - 2026-11-17
 
 ### Added

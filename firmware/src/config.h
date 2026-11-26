@@ -6,8 +6,13 @@
 
 namespace cfg {
 
-// ---- Pins (match hardware/HDD Synth Prototype MK5 and the CircuitPython settings.py) ----
+// ---- Pins (match hardware/HDD Synth Prototype MK5, board 5.4.0) ----
+// 5.4.0 moved the link from J6 to its own header, J8, and wired the SD card's
+// card detect. On the beta testers' 5.3.0 boards the link was on J6 (UART1,
+// GPIO 24/25): use firmware 0.25.0 or earlier for the link there.
 constexpr uint8_t PIN_SAFETY        = 0;   // Reserved for XIP_CS1 / boot safety; unused here
+constexpr uint8_t PIN_LINK_RX       = 1;   // J8 pin 3: UART0 RX from the IDE Synth Bay (HDDSynthPro)
+constexpr uint8_t PIN_LINK_TX       = 2;   // J8 pin 4: UART0 TX (the RP2350's UART_AUX function on GPIO 2)
 constexpr uint8_t PIN_RGB_RED       = 4;   // Common-anode RGB LED, LOW = on
 constexpr uint8_t PIN_RGB_GREEN     = 5;
 constexpr uint8_t PIN_RGB_BLUE      = 6;
@@ -26,10 +31,9 @@ constexpr uint8_t PIN_ENC_B         = 21;
 constexpr uint8_t PIN_ENC_BUTTON    = 22;
 constexpr uint8_t PIN_OLED_SDA      = 24;  // J6 pin 4 (I2C0)
 constexpr uint8_t PIN_OLED_SCL      = 25;  // J6 pin 3
-constexpr uint8_t PIN_LINK_RX       = 25;  // J6 pin 3 again: UART1 RX from HDDSynthPro (instead of the OLED)
-constexpr uint8_t PIN_LINK_TX       = 24;  // J6 pin 4: UART1 TX, reserved (not used yet)
 constexpr uint8_t PIN_SUPERCAP_ADC  = 27;  // ADC1, via 22k/22k divider
 constexpr uint8_t PIN_POWER_FLT     = 28;  // eFuse /FLT, open drain, external pull-up. LOW = fault
+constexpr uint8_t PIN_SD_CD         = 29;  // Card detect: the socket's switch to GND, internal pull-up. LOW = card in
 
 // ---- Audio ----
 constexpr uint32_t DEFAULT_SAMPLE_RATE = 16000;  // output rate at boot; each pack sets its own (wav.h lists them)

@@ -95,7 +95,7 @@ default. For example:
 | `OLED_ENABLED` | `false` | Use an SSD1306 128x64 I2C OLED on header J6, see [OLED display](controls.md#oled-display). *(New.)* |
 | `OLED_MODE` | `"activity"` | The OLED's main screen: `"activity"`, `"supercap"` or `"debug"`. *(New.)* |
 | `OLED_SAMPLE_MS` | `1000` | Time covered by each column of the activity and supercap graphs (minimum 50). *(New.)* |
-| `EXPERIMENTAL_HDDSYNTHPRO_SUPPORT` | `false` | Listen for the activity link from an IDE Synth Bay on J6 and play `sequential.wav` during sequential transfers, see [IDE Synth Bay activity link](link.md). Turns the OLED off (same header). *(New, experimental.)* |
+| `EXPERIMENTAL_HDDSYNTHPRO_SUPPORT` | `false` | Listen for the activity link from an IDE Synth Bay on J8 and play `sequential.wav` during sequential transfers, see [IDE Synth Bay activity link](link.md). Works alongside the OLED (board 5.4.0). *(New, experimental.)* |
 | `SEQUENTIAL_LED_COLOUR` | `"#FF1800"` (orange) | Activity LED colour during sequential transfers, with `EXPERIMENTAL_HDDSYNTHPRO_SUPPORT` on (a debugging aid). Same format as `ACTIVITY_LED_COLOUR`. *(New.)* |
 
 **Demo mode:** each pack spins up, plays idle/access with simulated HDD

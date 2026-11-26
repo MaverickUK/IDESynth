@@ -44,6 +44,41 @@ int claimSlot(Stream& s) {
     return -1;
 }
 
+// Card detect (board 5.4.0): the socket's switch pulls GPIO 29 low while a
+// card is in. It's trusted only once it has read low: on a board without it
+// wired (5.3.0) the pin just reads high through the pull-up, and the probe
+// decides as before.
+bool cdWired = false;
+uint32_t cdOpenSinceMs = 0;  // when the switch last read open (no card); 0 = closed
+constexpr uint32_t CD_REMOVED_MS = 50;  // open this long = card out (rides out switch bounce)
+
+bool cardSwitchClosed() {
+    static bool configured = false;
+    if (!configured) {
+        pinMode(cfg::PIN_SD_CD, INPUT_PULLUP);
+        delayMicroseconds(50);  // let the pull-up charge the line before the first read
+        configured = true;
+    }
+    const bool closed = digitalRead(cfg::PIN_SD_CD) == LOW;
+    if (closed) cdWired = true;
+    return closed;
+}
+
+// True when card detect says the slot is empty (and is known to be wired).
+bool slotEmpty() { return !cardSwitchClosed() && cdWired; }
+
+// While mounted: has the switch stayed open for CD_REMOVED_MS?
+bool cardPulled() {
+    if (cardSwitchClosed()) {
+        cdOpenSinceMs = 0;
+        return false;
+    }
+    if (!cdWired) return false;
+    const uint32_t now = millis();
+    if (cdOpenSinceMs == 0) cdOpenSinceMs = now | 1;  // never 0 while open
+    return now - cdOpenSinceMs >= CD_REMOVED_MS;
+}
+
 SdSpiConfig spiConfig() {
     return SdSpiConfig(cfg::PIN_SD_CS, DEDICATED_SPI, cfg::SD_SPI_HZ, &SPI1);
 }
@@ -180,6 +215,7 @@ void tryRemount() {
     const uint32_t now = millis();
     if (static_cast<int32_t>(now - nextRemountMs) < 0) return;
     nextRemountMs = now + cfg::SD_REMOUNT_INTERVAL_MS;
+    if (slotEmpty()) return;      // card detect: still out
     if (!cardResponds()) return;  // still absent: try again later
     if (mount() && reopenAll()) {
         st.recoveries++;
@@ -251,6 +287,16 @@ bool feedOnce(Stream& s, int slot) {
 } // namespace
 
 bool begin() {
+    if (!cardSwitchClosed()) {
+        // Card detect says no card (or isn't wired, on a 5.3.0 board): one
+        // quick probe settles it instead of SD_BOOT_RETRY_MS of retries.
+        if (cardResponds() && mount()) {
+            Console.println("[sd] card answered with card detect open (not wired on this board?)");
+            return true;
+        }
+        Console.println("[sd] no SD card (card detect)");
+        return false;
+    }
     // Some cards aren't ready the instant power comes up (and a PC's supply
     // rises more slowly than USB), so keep trying for a while. The quick
     // presence probe avoids card.begin()'s long timeout on an absent card.
@@ -271,7 +317,7 @@ bool begin() {
     return mount();
 }
 
-bool present() { return cardResponds(); }
+bool present() { return !slotEmpty() && cardResponds(); }
 
 bool mountsNow() {
     const bool ok = mount();
@@ -337,6 +383,10 @@ void pump() {
     // A few chunks per stream per call keeps loop() responsive; at 2 KB per
     // chunk that is far more than the 32 KB/s each voice consumes.
     constexpr int CHUNKS_PER_CALL = 4;
+    if (mounted && cardPulled()) {
+        Console.println("[sd] card removed (card detect)");
+        markDown();
+    }
     if (!mounted) {
         tryRemount();
         if (!mounted) return;

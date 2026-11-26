@@ -34,7 +34,7 @@ size_t commandFirst = 0, commandCount = 0;
 // Move what's queued into the UART's FIFO, as far as it has room.
 void drain() {
     if (!txQueue) return;
-    while (!txQueue->empty() && Serial2.availableForWrite() > 0) Serial2.write(txQueue->pop());
+    while (!txQueue->empty() && Serial1.availableForWrite() > 0) Serial1.write(txQueue->pop());
 }
 
 bool queueSentence(const char* body, uint32_t waitMs) {
@@ -67,30 +67,30 @@ char className(ActivityClass c) {
 } // namespace
 
 void begin() {
-    // UART1 is Arduino-Pico's Serial2. The hardware FIFO holds 32 bytes; a
+    // UART0 is Arduino-Pico's Serial1. The hardware FIFO holds 32 bytes; a
     // bigger software one (filled by the UART interrupt, on core 0) covers a
     // slow loop pass such as an SD refill.
-    Serial2.setRX(cfg::PIN_LINK_RX);
-    Serial2.setTX(cfg::PIN_LINK_TX);
-    Serial2.setFIFOSize(512);
+    Serial1.setRX(cfg::PIN_LINK_RX);
+    Serial1.setTX(cfg::PIN_LINK_TX);
+    Serial1.setFIFOSize(512);
     // The receive buffer above. Transmit has only the 32-byte hardware FIFO,
     // so what goes out waits in txQueue and service() feeds it in.
     static char* txBytes = new char[TX_QUEUE_BYTES];
     static TxQueue queue(txBytes, TX_QUEUE_BYTES);
     txQueue = &queue;
-    Serial2.begin(cfg::LINK_BAUD);
+    Serial1.begin(cfg::LINK_BAUD);
     // With nothing attached, keep the input from floating into noise (a
     // UART line idles high).
     gpio_pull_up(cfg::PIN_LINK_RX);
     started = true;
-    Console.println("[link] HDDSynthPro activity link listening on J6 (GP25, 115200 baud)");
+    Console.println("[link] HDDSynthPro activity link listening on J8 (GP1, 115200 baud)");
 }
 
 void service() {
     if (!started) return;
     const uint32_t now = millis();
-    for (int n = Serial2.available(); n > 0; --n) {
-        switch (parser.feed(static_cast<char>(Serial2.read()))) {
+    for (int n = Serial1.available(); n > 0; --n) {
+        switch (parser.feed(static_cast<char>(Serial1.read()))) {
             case LinkParser::Got::Activity: watch.seen(now); break;
             case LinkParser::Got::Head:
                 watch.seen(now);

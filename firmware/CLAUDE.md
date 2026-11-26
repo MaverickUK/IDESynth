@@ -38,20 +38,28 @@ or file I/O, and never block core 1.
 
 - **MCU:** RP2354A, an RP2350A with **2 MB in-package flash** on QSPI CS0.
   Built as `rpipico2` with `board_upload.maximum_size = 2097152`.
-  - There's an unpopulated SOIC-8 footprint (U3). Its CS goes to QSPI_SS via
+  - 5.3.0 has an unpopulated SOIC-8 footprint (U3). Its CS goes to QSPI_SS via
     R7 (0 Ω, fitted) or to GPIO0 via R6 (DNF), with R9 (DNF) as a pull-up.
+    5.4.0 removes it.
   - **Do not fit a flash chip on CS0** alongside the internal flash.
   - Fitting APS6404L PSRAM on CS1/GPIO0 is a possible upgrade.
 - **Pins:** see `src/config.h` (they match the Python `settings.py`).
   - SD on SPI1: SCK 10, MOSI 11, MISO 8, CS 9.
   - I2S: BCLK 13, LRCLK 14, DATA 12.
   - Amp SD_MODE: GP15.
+  - Synth Link (J8, board 5.4.0): UART0, RX GP1, TX GP2 (the RP2350's
+    UART_AUX function). 5.3.0 had it on J6 (UART1, GP25/24, shared with the
+    OLED): firmware 0.25.0 is the last for that.
+  - SD card detect (5.4.0): GP29, internal pull-up, LOW with a card in.
+  - HDD LED input (GP18, the opto's output): 5.4.0 adds a 10 k external
+    pull-up (R47); the internal one stays on.
 - **Amp:** MAX98357A. GAIN_SLOT is tied to VSYS (6 dB); SD_MODE high selects
   the left channel.
 - **Power path:**
-  - 5 V → TPS25921A eFuse → VIN_PROT → TPS61094 (supercap backup) → VSYS
+  - 5 V (aux H14, or USB through D4, an SS34, on 5.4.0) → TPS25921A eFuse → VIN_PROT → TPS61094 (supercap backup) → VSYS
     (amp) → TPS63020 buck-boost → +3V3 (MCU and SD).
-  - eFuse current limit ≈ 1.16 A (R36 110 k); UV trip ≈ 4.1 V rising /
+  - eFuse current limit ≈ 1.27 A on 5.4.0 (R36 120 k; 5.3.0 has 110 k,
+    1.16 A); UV trip ≈ 4.1 V rising /
     4.0 V falling.
   - TPS61094 boost holds VSYS at 4.2 V (OSEL 75 k); supercap charge
     termination 4.15 V (VCHG 75 k); charge current ≈ 250 mA.
@@ -64,9 +72,11 @@ or file I/O, and never block core 1.
 - **Buttons/debug:** S1 = RUN (reset), S2 = USB_BOOT. J2 = SWD (SWCLK, GND,
   SWDIO).
 - **Known board issues (for the next revision):**
-  - SD DAT1/DAT2 (pins 8 and 1) are floating and should have pull-ups.
+  - SD DAT1/DAT2 (pins 8 and 1) are floating and should have pull-ups
+    (5.4.0 adds them).
   - No series termination on the SD SPI lines.
-  - TPS63020 PG and the SD card-detect pin aren't connected.
+  - TPS63020 PG isn't connected. Neither is the SD card-detect pin on 5.3.0
+    (5.4.0 wires it to GP29).
   - VSYS bulk capacitance is thin (about 74 µF nominal MLCC).
   - **Supercap stopped holding charge after one deep discharge** (seen
     2026-10-15, hardware test 6, powered from a Mac's USB-C port). A real

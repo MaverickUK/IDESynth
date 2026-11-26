@@ -1058,12 +1058,7 @@ void boot() {
         usbdrive::run();  // reboots when done
     }
     if (settings.hddSynthPro) {
-        // The link uses the OLED's pins on J6, so the two can't share them.
-        if (settings.oledEnabled) {
-            Console.println("[link] EXPERIMENTAL_HDDSYNTHPRO_SUPPORT uses J6: OLED off");
-            settings.oledEnabled = false;
-        }
-        hddlink::begin();
+        hddlink::begin();  // on J8, so the OLED (J6) can stay on
         ringSequential = new SampleRing;  // before the pack loads, so the spindown's RAM check counts it
     }
     power::begin(settings.powerDetection);
